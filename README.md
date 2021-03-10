@@ -1,4 +1,4 @@
-# THE BEST PROJECT EVER
+# Offensive language exploratory analysis
 
 ## Datasets
 
