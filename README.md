@@ -5,7 +5,7 @@
 * [fairseq:](https://github.com/pytorch/fairseq)  PyTorch
 * [Marian NMT:](https://marian-nmt.github.io/) C++
 * [T5:](https://github.com/google-research/text-to-text-transfer-transformer) Tensorflow
-* [XLM-RoBERTa](https://github.com/pytorch/fairseq/tree/master/examples/xlmr) 
+* [XLM-RoBERTa:](https://github.com/pytorch/fairseq/tree/master/examples/xlmr) Transformers (for PyTorch and Tensorflow)
 
 ## Available datasets
 
