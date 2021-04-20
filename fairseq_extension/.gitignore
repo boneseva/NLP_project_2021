@@ -134,3 +134,4 @@ experimental/*
 /europarl_sl-en/
 /mosesdecoder/
 /subword-nmt/
+/data-original/
