@@ -130,3 +130,7 @@ data-bin/
 
 # Experimental Folder
 experimental/*
+/data-binarized/
+/europarl_sl-en/
+/mosesdecoder/
+/subword-nmt/

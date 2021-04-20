@@ -1,23 +1,23 @@
-RESULT=results/europarl_sl-en
-mkdir results/europarl_sl-en
-BIN=data-binarized/europarl_sl
+RESULT=results/en-sl
+mkdir results/en-sl
+BIN=data-binarized/datasets_en-sl
 
-CUDA_VISIBLE_DEVICES=0 python3 -m torch.distributed.launch --nproc_per_node=4 \
-    fairseq_cli/train.py $BIN \
-    --arch transformer_iwslt_de_en \
-    --augmentation \
-    --augmentation_schema cut_off \
-    --augmentation_masking_schema word \
-    --augmentation_masking_probability 0.05 \
-    --augmentation_replacing_schema mask \
+# CUDA_VISIBLE_DEVICES=0 
+# python -m torch.distributed.launch --nproc_per_node=4 \
+python fairseq_cli/train.py $BIN \
+    --arch transformer \
     --share-all-embeddings \
     --optimizer adam \
     --adam-betas '(0.9, 0.98)' \
     --adam-eps 1e-9 \
     --clip-norm 0.0 \
-    --criterion label_smoothed_cross_entropy \
+    --augmentation \
+    --augmentation_schema cut_off \
+    --augmentation_masking_schema word \
+    --augmentation_masking_probability 0.05 \
+    --augmentation_replacing_schema mask \
+    --criterion label_smoothed_cross_entropy_with_regularization \
     --weight-decay 0.0001 \
-    --regularization_weight 5.0 \
     --label-smoothing 0.1 \
     --max-tokens 2048 \
     --dropout 0.3 \
@@ -28,7 +28,7 @@ CUDA_VISIBLE_DEVICES=0 python3 -m torch.distributed.launch --nproc_per_node=4 \
     --warmup-updates 6000 \
     --max-epoch 100 \
     --update-freq 1 \
-    --distributed-world-size 4 \
+ #   --distributed-world-size 4 \
     --ddp-backend=c10d \
     --keep-last-epochs 20 \
     --log-format tqdm \
