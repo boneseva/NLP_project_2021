@@ -1,16 +1,32 @@
 # Automatic language translation
 
-## Available frameworks
+## Used frameworks
 
-* [fairseq:](https://github.com/pytorch/fairseq)  PyTorch
-* [Marian NMT:](https://marian-nmt.github.io/) C++
-* [T5:](https://github.com/google-research/text-to-text-transfer-transformer) Tensorflow
-* [XLM-RoBERTa:](https://github.com/pytorch/fairseq/tree/master/examples/xlmr) Transformers (for PyTorch and Tensorflow)
+* [fairseq](https://github.com/pytorch/fairseq) (for training from scratch)
+* [Hugging Face](https://huggingface.co/) (for pretrained model)
 
-## Available datasets
+## [Pretrained model](https://huggingface.co/Helsinki-NLP/opus-mt-en-zls)
 
-* [OpenSubtitles 2016](https://opus.nlpl.eu/OpenSubtitles-v2016.php) 
-* [OpenSubtitles 2018](https://opus.nlpl.eu/OpenSubtitles-v2018.php)
+## Datasets used for training the general model
+
+* [MultiCCAligned](https://opus.nlpl.eu/MultiCCAligned-v1.php) 
+* [WikiMatrix](https://opus.nlpl.eu/WikiMatrix-v1.php)
+* [wikimedia](https://opus.nlpl.eu/wikimedia-v20210402.php)
+* [OpenSubtitles](https://opus.nlpl.eu/OpenSubtitles-v2018.php)
+* [DGT](https://opus.nlpl.eu/DGT-v2019.php) 
+* [XLEnt](https://opus.nlpl.eu/XLEnt-v1.php)
+* [TildeMODEL](https://opus.nlpl.eu/TildeMODEL-v2018.php)
+* [ParaCrawl](https://opus.nlpl.eu/ParaCrawl-v7.1.php)
+* [CCAligned](https://opus.nlpl.eu/CCAligned-v1.php) 
 * [Europarl](https://opus.nlpl.eu/Europarl.php)
-* [EMEA](https://opus.nlpl.eu/EMEA.php)
-* [ELRC](https://opus.nlpl.eu/ELRA-W0267.php)
+
+## Train transformer model with data augmentation on [general datasets](#datasets-used-for-training-the-general-model)
+
+```bash
+cd fairseq_extension
+pip install -r requirements
+pip install --editable ./
+cd 'bash scripts'
+bash preprocessing.sh # downloads the datasets, preprocesses them (bpe tokenization, binarization, ...) and splits them into train & valid (random 0.0002%) 
+bash train.sh # trains the model on fairseq with cut off augmentation
+```

@@ -2,6 +2,8 @@
 # Adapted from https://github.com/facebookresearch/MIXER/blob/master/prepareData.sh
 # Whole repo: https://github.com/stevezheng23/fairseq_extension
 
+cd ..
+
 echo 'Cloning Moses github repository (for tokenization scripts)...'
 git clone https://github.com/moses-smt/mosesdecoder.git
 
@@ -40,35 +42,11 @@ fi
 src=en
 tgt=sl
 lang=en-sl
-prep=datasets
+prep=data/datasets
 tmp=$prep/tmp
-orig=data-original
+orig=data/data-original
 
-mkdir -p $orig $tmp $prep
-
-#cd $orig
-#
-#for ((i=0;i<${#URLS[@]};++i)); do
-#    file=${FILES[i]}
-#    if [ -f $file ]; then
-#        echo "$file already exists, skipping download"
-#    else
-#        url=${URLS[i]}
-#        wget "$url"
-#        if [ -f $file ]; then
-#            echo "$url successfully downloaded."
-#        else
-#            echo "$url not successfully downloaded."
-#            exit -1
-#        fi
-#        if [ ${file: -4} == ".tgz" ]; then
-#            tar zxvf $file
-#        elif [ ${file: -4} == ".tar" ]; then
-#            tar xvf $file
-#        fi
-#    fi
-#done
-#cd ..
+mkdir -p $tmp $prep
 
 echo "pre-processing train data..."
 for l in $src $tgt; do
@@ -108,7 +86,3 @@ done
 
 perl $CLEAN -ratio 1.5 $tmp/bpe.train $src $tgt $prep/train 1 250
 perl $CLEAN -ratio 1.5 $tmp/bpe.valid $src $tgt $prep/valid 1 250
-
-#for L in $src $tgt; do
-#    cp $tmp/bpe.test.$L $prep/test.$L
-#done

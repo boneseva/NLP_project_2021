@@ -131,5 +131,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-/fairseq_extension/data-original/
-/fairseq_extension/datasets/
+
+
+/fairseq_extension/data/
+/fairseq_extension/mosesdecoder/
+/fairseq_extension/subword-nmt/
