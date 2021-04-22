@@ -4,11 +4,11 @@
 
 cd ..
 
-echo 'Cloning Moses github repository (for tokenization scripts)...'
-git clone https://github.com/moses-smt/mosesdecoder.git
-
-echo 'Cloning Subword NMT repository (for BPE pre-processing)...'
-git clone https://github.com/rsennrich/subword-nmt.git
+#echo 'Cloning Moses github repository (for tokenization scripts)...'
+#git clone https://github.com/moses-smt/mosesdecoder.git
+#
+#echo 'Cloning Subword NMT repository (for BPE pre-processing)...'
+#git clone https://github.com/rsennrich/subword-nmt.git
 
 SCRIPTS=mosesdecoder/scripts
 TOKENIZER=$SCRIPTS/tokenizer/tokenizer.perl
@@ -22,15 +22,13 @@ BPE_TOKENS=40000
 #English - slovenian
 
 CORPORA=(
-          "Europarl.en-sl"
-          "CCAligned.en-sl"
-          "DGT.en-sl"
-          "MultiCCAligned.en-sl"
-          "OpenSubtitles.en-sl"
-          "TildeMODEL.en-sl"
-          "WikiMatrix.en-sl"
-          "wikimedia.en-sl"
-          "XLEnt.en-sl"
+          "TED2013"
+          "TED2019_1"
+          "TED2019_2"
+          "TED2019_3"
+          "TED2019_4"
+          "TED2019_5"
+          "TED2020"
 )
 # move original files from https://drive.google.com/drive/folders/1aBGSStOfSCwsCwbblGIVOGMD1_FDRa1S?usp=sharing in data-original
 
@@ -42,9 +40,9 @@ fi
 src=en
 tgt=sl
 lang=en-sl
-prep=data/datasets
+prep=data/datasets-ted
 tmp=$prep/tmp
-orig=data/data-original
+orig=data/data-original-ted
 
 mkdir -p $tmp $prep
 
@@ -60,10 +58,10 @@ for l in $src $tgt; do
 done
 
 echo "splitting train and valid..."
-# every 5000th line
+# every 1000th line
 for l in $src $tgt; do
-    awk '{if (NR%5000 == 0)  print $0; }' $tmp/train.tags.$lang.tok.$l > $tmp/valid.$l
-    awk '{if (NR%5000 != 0)  print $0; }' $tmp/train.tags.$lang.tok.$l > $tmp/train.$l
+    awk '{if (NR%1000 == 0)  print $0; }' $tmp/train.tags.$lang.tok.$l > $tmp/valid.$l
+    awk '{if (NR%1000 != 0)  print $0; }' $tmp/train.tags.$lang.tok.$l > $tmp/train.$l
 done
 
 TRAIN=$tmp/train.en-sl
