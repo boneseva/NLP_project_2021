@@ -19,6 +19,7 @@ do
 	rm README
 	rm LICENSE
 	rm ${corpus}.en-sl.xml
+	rm ${corpus}.en-sl.ids
 	rm ${corpus}.zip
 	cd ../..
 done
