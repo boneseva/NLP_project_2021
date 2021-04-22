@@ -4,11 +4,11 @@
 
 cd ..
 
-echo 'Cloning Moses github repository (for tokenization scripts)...'
-git clone https://github.com/moses-smt/mosesdecoder.git
+# echo 'Cloning Moses github repository (for tokenization scripts)...'
+# git clone https://github.com/moses-smt/mosesdecoder.git
 
-echo 'Cloning Subword NMT repository (for BPE pre-processing)...'
-git clone https://github.com/rsennrich/subword-nmt.git
+# echo 'Cloning Subword NMT repository (for BPE pre-processing)...'
+# git clone https://github.com/rsennrich/subword-nmt.git
 
 SCRIPTS=mosesdecoder/scripts
 TOKENIZER=$SCRIPTS/tokenizer/tokenizer.perl
@@ -84,5 +84,8 @@ for L in $src $tgt; do
     done
 done
 
-perl $CLEAN -ratio 1.5 $tmp/bpe.train $src $tgt $prep/train 1 250
-perl $CLEAN -ratio 1.5 $tmp/bpe.valid $src $tgt $prep/valid 1 250
+# remove empty lines
+# removes redundant space characters
+# drops lines (and their corresponding lines), that are empty, too short or too long
+perl $CLEAN -ratio 5 $tmp/bpe.train $src $tgt $prep/train 1 250
+perl $CLEAN -ratio 5 $tmp/bpe.valid $src $tgt $prep/valid 1 250

@@ -1,10 +1,8 @@
-RESULT=results/en-sl
-mkdir results/en-sl
-BIN=data-binarized/datasets_en-sl
+RESULT=../results/en-sl
+mkdir -p ../results/en-sl
+BIN=../data/data-binarized/datasets_en-sl
 
-# CUDA_VISIBLE_DEVICES=0 
-# python -m torch.distributed.launch --nproc_per_node=4 \
-python fairseq_cli/train.py $BIN \
+CUDA_VISIBLE_DEVICES=0,1 python3 -m torch.distributed.launch --nproc_per_node=4 ../fairseq_cli/train.py $BIN \
     --arch transformer \
     --share-all-embeddings \
     --optimizer adam \
@@ -26,12 +24,10 @@ python fairseq_cli/train.py $BIN \
     --lr-scheduler inverse_sqrt \
     --lr 7e-4 \
     --warmup-updates 6000 \
-    --max-epoch 100 \
+    --max-epoch 1000 \
     --update-freq 1 \
- #   --distributed-world-size 4 \
     --ddp-backend=c10d \
     --keep-last-epochs 20 \
     --log-format tqdm \
-    --log-interval 100 \
-    --save-dir $RESULT \
-    --seed 40199672
+    --log-interval 10 \
+    --save-dir $RESULT
