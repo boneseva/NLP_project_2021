@@ -60,8 +60,10 @@ done
 echo "splitting train and valid..."
 # every 1000th line
 for l in $src $tgt; do
-    awk '{if (NR%1000 == 0)  print $0; }' $tmp/train.tags.$lang.tok.$l > $tmp/valid.$l
-    awk '{if (NR%1000 != 0)  print $0; }' $tmp/train.tags.$lang.tok.$l > $tmp/train.$l
+	shuf $tmp/train.tags.$lang.tok.$l > $tmp/tmp.$l
+	head -n 1000 $tmp/tmp.$l > $tmp/valid.$l
+	tail -n +1000 $tmp/tmp.$l > $tmp/train.$l
+	rm $tmp/tmp.$l
 done
 
 TRAIN=$tmp/train.en-sl
