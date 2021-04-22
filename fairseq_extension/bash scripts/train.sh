@@ -4,7 +4,6 @@ BIN=../data/data-binarized/datasets_en-sl
 
 CUDA_VISIBLE_DEVICES=0,1 python3 -m torch.distributed.launch --nproc_per_node=4 ../fairseq_cli/train.py $BIN \
     --arch transformer \
-    --share-all-embeddings \
     --optimizer adam \
     --adam-betas '(0.9, 0.98)' \
     --adam-eps 1e-9 \
@@ -31,3 +30,5 @@ CUDA_VISIBLE_DEVICES=0,1 python3 -m torch.distributed.launch --nproc_per_node=4 
     --log-format tqdm \
     --log-interval 10 \
     --save-dir $RESULT
+    --share-all-embeddings \
+    --distributed-world-size 2

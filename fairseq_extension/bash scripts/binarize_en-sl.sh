@@ -1,8 +1,11 @@
 #!/bin/bash
 cd ..
 
-DATA=data/datasets
-BIN=data/data-binarized/datasets_en-sl
+#DATA=data/datasets
+#BIN=data/data-binarized/datasets_en-sl
+
+DATA=data/datasets-ted
+BIN=data/data-binarized-ted/datasets_en-sl
 
 python3 fairseq_cli/preprocess.py \
   --source-lang en --target-lang sl \
