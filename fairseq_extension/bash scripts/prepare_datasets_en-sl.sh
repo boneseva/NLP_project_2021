@@ -62,9 +62,12 @@ done
 echo "splitting train and valid..."
 # every 5000th line
 for l in $src $tgt; do
-    awk '{if (NR%5000 == 0)  print $0; }' $tmp/train.tags.$lang.tok.$l > $tmp/valid.$l
-    awk '{if (NR%5000 != 0)  print $0; }' $tmp/train.tags.$lang.tok.$l > $tmp/train.$l
+	shuf $tmp/train.tags.$lang.tok.$l > $tmp/tmp.$l
+	head -n 5000 $tmp/tmp.$l > $tmp/valid.$l
+	tail -n +5000 $tmp/tmp.$l > $tmp/train.$l
+	rm $tmp/tmp.$l
 done
+
 
 TRAIN=$tmp/train.en-sl
 BPE_CODE=$prep/code

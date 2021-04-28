@@ -57,10 +57,12 @@ for l in $src $tgt; do
     done
 done
 
+perl $CLEAN -ratio 5 $tmp/train.tags.$lang.tok $src $tgt $tmp/train-cleaned.tags.$lang.tok 1 250
+
 echo "splitting train and valid..."
 # every 1000th line
 for l in $src $tgt; do
-	shuf $tmp/train.tags.$lang.tok.$l > $tmp/tmp.$l
+	shuf $tmp/train-cleaned.tags.$lang.tok.$l > $tmp/tmp.$l
 	head -n 1000 $tmp/tmp.$l > $tmp/valid.$l
 	tail -n +1000 $tmp/tmp.$l > $tmp/train.$l
 	rm $tmp/tmp.$l
@@ -80,9 +82,6 @@ for L in $src $tgt; do
 #    for f in train.$L valid.$L test.$L; do
     for f in train.$L valid.$L; do
         echo "apply_bpe.py to ${f}..."
-        python3 $BPEROOT/apply_bpe.py -c $BPE_CODE < $tmp/$f > $tmp/bpe.$f
+        python3 $BPEROOT/apply_bpe.py -c $BPE_CODE < $tmp/$f > $prep/$f
     done
 done
-
-perl $CLEAN -ratio 5 $tmp/bpe.train $src $tgt $prep/train 1 250
-perl $CLEAN -ratio 5 $tmp/bpe.valid $src $tgt $prep/valid 1 250
