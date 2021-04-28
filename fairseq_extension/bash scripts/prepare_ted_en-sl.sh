@@ -28,6 +28,16 @@ CORPORA=(
           "TED2019_3"
           "TED2019_4"
           "TED2019_5"
+		  "TED2019_6"
+		  "TED2019_7"
+		  "TED2019_8"
+		  "TED2019_9"
+		  "TED2019_10"
+		  "TED2018_11"
+		  "TED2018_12"
+		  "TED2018_13"
+		  "TED2018_14"
+		  "TED2018_15"
           "TED2020"
 )
 # move original files from https://drive.google.com/drive/folders/1aBGSStOfSCwsCwbblGIVOGMD1_FDRa1S?usp=sharing in data-original
@@ -57,12 +67,18 @@ for l in $src $tgt; do
     done
 done
 
-perl $CLEAN -ratio 5 $tmp/train.tags.$lang.tok $src $tgt $tmp/train-cleaned.tags.$lang.tok 1 250
+perl $CLEAN -ratio 5 $tmp/train.tags.$lang.tok $src $tgt $tmp/train-cleaned.tags.$lang.tok 2 250
+
+# remove duplicate lines (applause, etc.), and lines starting with http
+for l in $src $tgt; do
+	sort $tmp/train-cleaned.tags.$lang.tok.$l | uniq | sed '/^http/d' > $tmp/train-noduplicates.tags.$lang.tok.$l
+done
+
 
 echo "splitting train and valid..."
 # every 1000th line
 for l in $src $tgt; do
-	shuf $tmp/train-cleaned.tags.$lang.tok.$l > $tmp/tmp.$l
+	shuf $tmp/train-noduplicates.tags.$lang.tok.$l > $tmp/tmp.$l
 	head -n 1000 $tmp/tmp.$l > $tmp/valid.$l
 	tail -n +1000 $tmp/tmp.$l > $tmp/train.$l
 	rm $tmp/tmp.$l

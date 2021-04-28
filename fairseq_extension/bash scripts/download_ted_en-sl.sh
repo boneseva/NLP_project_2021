@@ -9,7 +9,6 @@ corpora="TED2013 TED2020"
 
 wget -O TED2013.zip -c https://opus.nlpl.eu/download.php?f=TED2013/v1.1/moses/en-sl.txt.zip
 wget -O TED2020.zip -c https://opus.nlpl.eu/download.php?f=TED2020/v1/moses/en-sl.txt.zip
-#wget -O extras -c 'https://docs.google.com/uc?export=download&id=1NOEskzgfL_zUS1um46N4Nubyo8eRedle' 
 
 for corpus in $corpora
 do
@@ -21,5 +20,11 @@ do
 	rm ${corpus}.en-sl.xml
 	rm ${corpus}.en-sl.ids
 	rm ${corpus}.zip
+	mv ${corpus}.en-sl.en ${corpus}.en
+	mv ${corpus}.en-sl.sl ${corpus}.sl
 	cd ../..
 done
+
+#fix dataset file endings from drive
+for f in $DIR/*en.txt; do mv "$f" "${f%en.txt}.en"; done
+for f in $DIR/*sl.txt; do mv "$f" "${f%sl.txt}.sl"; done
