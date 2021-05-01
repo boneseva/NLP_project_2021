@@ -2,6 +2,8 @@ import nltk
 
 #evaluation_data_prefix = 'fairseq_extension/data/translated-ted/valid'
 #translation_prefix = "fairseq_extension/data/translated-ted/translated-pretrained"
+evaluation_data_prefix = 'fairseq_extension/data/asistent-testset/asistent_testset'
+translation_prefix = "fairseq_extension/data/asistent-testset/translated-pretrained"
 
 hypotheses = []
 references = []
@@ -11,7 +13,7 @@ joined_list_of_references = []
 
 for lang_pair in ['en-sl', 'sl-en']:
     print('Evaluating', lang_pair)
-    with open(evaluation_data_prefix + '.' + lang_pair.split('-')[0], 'r', encoding='utf-8') as references_file:
+    with open(evaluation_data_prefix + '.' + lang_pair.split('-')[1], 'r', encoding='utf-8') as references_file:
         with open(translation_prefix + '.' + lang_pair + '.' + lang_pair.split('-')[1], 'r', encoding='utf-8') as hypotheses_file:
             for r, h in zip(references_file, hypotheses_file):
                 list_of_references.append([r.split()])
