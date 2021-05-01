@@ -59,15 +59,9 @@ for l in $src $tgt; do
     done
 done
 
-echo "splitting train and valid..."
-# every 5000th line
-for l in $src $tgt; do
-	shuf $tmp/train.tags.$lang.tok.$l > $tmp/tmp.$l
-	head -n 5000 $tmp/tmp.$l > $tmp/valid.$l
-	tail -n +5000 $tmp/tmp.$l > $tmp/train.$l
-	rm $tmp/tmp.$l
-done
+perl $CLEAN -ratio 5 $tmp/train.tags.$lang.tok $src $tgt $tmp/train-cleaned.tags.$lang.tok 2 250
 
+python3 "bash scripts"/split.py $lang 'general' 5000
 
 TRAIN=$tmp/train.en-sl
 BPE_CODE=$prep/code
@@ -87,8 +81,8 @@ for L in $src $tgt; do
     done
 done
 
-# remove empty lines
-# removes redundant space characters
-# drops lines (and their corresponding lines), that are empty, too short or too long
-perl $CLEAN -ratio 5 $tmp/bpe.train $src $tgt $prep/train 1 250
-perl $CLEAN -ratio 5 $tmp/bpe.valid $src $tgt $prep/valid 1 250
+## remove empty lines
+## removes redundant space characters
+## drops lines (and their corresponding lines), that are empty, too short or too long
+#perl $CLEAN -ratio 5 $tmp/bpe.train $src $tgt $prep/train 1 250
+#perl $CLEAN -ratio 5 $tmp/bpe.valid $src $tgt $prep/valid 1 250

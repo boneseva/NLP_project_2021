@@ -10,6 +10,7 @@ cd ..
 #echo 'Cloning Subword NMT repository (for BPE pre-processing)...'
 #git clone https://github.com/rsennrich/subword-nmt.git
 
+
 SCRIPTS=mosesdecoder/scripts
 TOKENIZER=$SCRIPTS/tokenizer/tokenizer.perl
 CLEAN=$SCRIPTS/training/clean-corpus-n.perl
@@ -28,16 +29,16 @@ CORPORA=(
           "TED2019_3"
           "TED2019_4"
           "TED2019_5"
-		  "TED2019_6"
-		  "TED2019_7"
-		  "TED2019_8"
-		  "TED2019_9"
-		  "TED2019_10"
-		  "TED2018_11"
-		  "TED2018_12"
-		  "TED2018_13"
-		  "TED2018_14"
-		  "TED2018_15"
+          "TED2019_6"
+          "TED2019_7"
+          "TED2019_8"
+          "TED2019_9"
+          "TED2019_10"
+          "TED2018_11"
+          "TED2018_12"
+          "TED2018_13"
+          "TED2018_14"
+          "TED2018_15"
           "TED2020"
 )
 # move original files from https://drive.google.com/drive/folders/1aBGSStOfSCwsCwbblGIVOGMD1_FDRa1S?usp=sharing in data-original
@@ -69,7 +70,7 @@ done
 
 perl $CLEAN -ratio 5 $tmp/train.tags.$lang.tok $src $tgt $tmp/train-cleaned.tags.$lang.tok 2 250
 
-python3 "bash scripts"/split.py $lang
+python3 "bash scripts"/split.py $lang 'ted' 1000
 
 TRAIN=$tmp/train.en-sl
 BPE_CODE=$prep/code
