@@ -136,3 +136,4 @@ dmypy.json
 /fairseq_extension/data/
 /fairseq_extension/mosesdecoder/
 /fairseq_extension/subword-nmt/
+/fairseq_extension/results

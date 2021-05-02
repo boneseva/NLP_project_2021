@@ -1,12 +1,10 @@
 #!/bin/bash
+
 cd ..
 
+RESULT=results/en-sl
+BIN=data/data-binarized/datasets_en-sl
 
-
-
-MODEL_DIR=wmt14.en-fr.fconv-py
-> fairseq-interactive \
-    --path $MODEL_DIR/model.pt $MODEL_DIR \
-    --beam 5 --source-lang en --target-lang fr \
-    --tokenizer moses \
-    --bpe subword_nmt --bpe-codes $MODEL_DIR/bpecodes
+python3 fairseq_cli/generate.py $BIN/valid.en-sl.en.bin \
+    --path $RESULT/checkpoint_best.pt \
+    --batch-size 128 --beam 5
