@@ -14,7 +14,7 @@ def split(lang, dataset, valid_len):
     with open(tmp+"train-cleaned.tags."+lang+".tok.sl", "r", encoding="utf-8") as fsl, \
         open(tmp+"train-cleaned.tags."+lang+".tok.en", "r", encoding="utf-8") as fen:
         for rsl, ren in zip(fsl, fen):
-            if "http://" not in rsl and "https://" not in ren and rsl not in sl_unique and ren not in en_unique:
+            if "http" not in rsl and "http" not in ren and rsl not in sl_unique and ren not in en_unique:
                 # remove duplicate lines (applause, etc.), and lines starting with http
                 sl_unique.append(rsl)
                 en_unique.append(ren)
