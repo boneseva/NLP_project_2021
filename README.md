@@ -7,6 +7,8 @@
 
 ## [Pretrained model](https://huggingface.co/Helsinki-NLP/opus-mt-en-zls)
 
+The pretrained model can be evaluated using [translate_pretrained.py](https://github.com/bounesh/NLP_project_2021/blob/main/translate_pretrained.py).
+
 ## Datasets used for training the general model
 
 * [MultiCCAligned](https://opus.nlpl.eu/MultiCCAligned-v1.php) 
