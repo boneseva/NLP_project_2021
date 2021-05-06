@@ -10,7 +10,6 @@ cd ..
 #echo 'Cloning Subword NMT repository (for BPE pre-processing)...'
 #git clone https://github.com/rsennrich/subword-nmt.git
 
-
 SCRIPTS=mosesdecoder/scripts
 TOKENIZER=$SCRIPTS/tokenizer/tokenizer.perl
 CLEAN=$SCRIPTS/training/clean-corpus-n.perl
@@ -53,14 +52,14 @@ done
 
 
 TRAIN=$tmp/train.en-sl
-BPE_CODE=$prep/code
+BPE_CODE=data/datasets/code
 rm -f $TRAIN
 for l in $src $tgt; do
     cat $tmp/train.tags.en-sl.tok.$l >> $TRAIN
 done
 
-echo "learn_bpe.py on ${TRAIN}..."
-python3 $BPEROOT/learn_bpe.py -s $BPE_TOKENS < $TRAIN > $BPE_CODE
+#echo "learn_bpe.py on ${TRAIN}..."
+#python3 $BPEROOT/learn_bpe.py -s $BPE_TOKENS < $TRAIN > $BPE_CODE
 
 for L in $src $tgt; do
 	echo "apply_bpe.py to train.${L}..."
