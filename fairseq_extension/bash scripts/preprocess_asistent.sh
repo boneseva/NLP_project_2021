@@ -56,16 +56,13 @@ TRAIN=$tmp/train.en-sl
 BPE_CODE=$prep/code
 rm -f $TRAIN
 for l in $src $tgt; do
-    cat $tmp/train.$l >> $TRAIN
+    cat $tmp/train.tags.en-sl.tok.$l >> $TRAIN
 done
 
 echo "learn_bpe.py on ${TRAIN}..."
 python3 $BPEROOT/learn_bpe.py -s $BPE_TOKENS < $TRAIN > $BPE_CODE
 
 for L in $src $tgt; do
-#    for f in train.$L valid.$L test.$L; do
-    for f in train.$L valid.$L; do
-        echo "apply_bpe.py to ${f}..."
-        python3 $BPEROOT/apply_bpe.py -c $BPE_CODE < $tmp/$f > $prep/$f
-    done
+	echo "apply_bpe.py to train.${L}..."
+	python3 $BPEROOT/apply_bpe.py -c $BPE_CODE < $tmp/train.tags.en-sl.tok.$L > $prep/train.$L
 done
