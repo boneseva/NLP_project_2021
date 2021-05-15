@@ -32,3 +32,6 @@ cd 'bash scripts'
 bash preprocessing.sh # downloads the datasets, preprocesses them (bpe tokenization, binarization, ...) and splits them into train & valid (random 0.0002%) 
 bash train.sh # trains the model on fairseq with cut off augmentation
 ```
+
+## For evaluation
+```pip install nltk jiwer```
