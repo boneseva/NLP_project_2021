@@ -20,12 +20,11 @@ corpora="${v1corpora} DGT Europarl wikimedia TildeMODEL"
 
 for corpus in $corpora
 do
-  mv ${corpus}.zip $DIR/${corpus}.zip
-  cd $DIR
 	unzip ${corpus}.zip
 	rm README
 	rm LICENSE
 	rm ${corpus}.en-sl.xml
 	rm ${corpus}.zip
-	cd ../..
 done
+
+cd ../..
