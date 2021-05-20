@@ -63,6 +63,12 @@ bash scripts/fine_tune.sh
 * Download all checkpoints from https://drive.google.com/drive/folders/1RObf3zXgZXqgzUf4EZWreblnpPr6u07x?usp=sharing and save them to results/general.
 * Download all checkpoints from https://drive.google.com/drive/folders/1cKTtlo_TlspxBj1K9vnRLmpGjMLubSLj?usp=sharing and save them to results/ted.
 
+TL;DR I just want to run it:
+```bash
+bash scripts/translate_all.sh
+```
+
+The long way around:
 * Download the binarized general validation set using:
 ```bash
 bash scripts/download_general_binarized.sh
