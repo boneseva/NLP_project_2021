@@ -63,6 +63,12 @@ bash scripts/fine_tune.sh
 * Download all checkpoints from https://drive.google.com/drive/folders/1RObf3zXgZXqgzUf4EZWreblnpPr6u07x?usp=sharing and save them to results/general.
 * Download all checkpoints from https://drive.google.com/drive/folders/1cKTtlo_TlspxBj1K9vnRLmpGjMLubSLj?usp=sharing and save them to results/ted.
 
+TL;DR I just want to run it:
+```bash
+bash scripts/translate_all.sh
+```
+
+The long way around:
 * Download the binarized general validation set using:
 ```bash
 bash scripts/download_general_binarized.sh
@@ -94,3 +100,19 @@ bash scripts/download_ted_binarized.sh
 ```bash
 bash scripts/translate_ted.sh
 ```
+
+Then, clean up the files using:
+```bash
+python3 clean_trained.py
+```
+
+To translate the assistant and domain validation sets with the pretrained model, run:
+```bash
+python3 translate_pretrained.py
+```
+
+You can then evaluate and calculate the needed metrics for each model and dataset using the following command: 
+```bash
+python3 evaluate.py <model> <dataset>
+```
+The model can be one of pretrained, general, domain, while the dataset can be asistent, general or ted. You can also omit the dataset, in which case the script will evaluate the model on all the datasets.
