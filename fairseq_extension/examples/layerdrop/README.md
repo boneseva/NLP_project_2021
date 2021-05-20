@@ -31,7 +31,7 @@ fairseq-generate /path/to/bped/wmt/data --path nmt_checkpoint.pt \
   --batch-size 64 \
   --remove-bpe \
   --gen-subset test > wmt16_gen.txt
-bash scripts/compound_split_bleu.sh wmt16_gen.txt
+scripts/compound_split_bleu.sh wmt16_gen.txt
 # prints BLEU4 = 30.17
 ```
 

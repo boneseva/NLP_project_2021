@@ -11,16 +11,15 @@
 python3 -m venv myvenv
 source myvenv/bin/activate
 pip install -r requirements.txt
-cd fairseq_extension
-pip install --editable ./
-cd ..
+pip install --editable fairseq_extension
 ```
 ## Train general model
 
 ### Prepare the data
 You can prepare the data by either downloading the original data and preprocessing it (it will take a long time and you will not get the same train and valid sets, as they are chosen at random):
-```bash bash_scripts/download_datasets.sh
-bash bash_scripts/preprocess_general.sh
+```
+bash scripts/download_datasets.sh
+bash scripts/preprocess_general.sh
 ```
 or downloading the already preprocessed data:
 ```bash
@@ -30,7 +29,7 @@ wget download binarized corpus into data/data-binarized
 ### Train transformer model with data augmentation on general datasets
 
 ```bash
-bash bash_scripts/train.sh
+bash scripts/train.sh
 ```
 
 ## Fine-tune the general model on TED data
@@ -39,7 +38,7 @@ bash bash_scripts/train.sh
 You can again prepare the data by either downloading the original data and preprocessing it:
 ```bash
 wget download TED corpus into data/data-original-ted
-bash bash_scripts/preprocess_ted.sh
+bash scripts/preprocess_ted.sh
 ```
 or downloading the already preprocessed data:
 ```bash
@@ -54,7 +53,7 @@ wget download best epoch as results/general/checkpoint_best.pt
 ### Fine-tune a domain specific translation model on TED data
 
 ```bash
-bash bash_scripts/fine_tune.sh
+bash scripts/fine_tune.sh
 ```
 
 ### Evaluate

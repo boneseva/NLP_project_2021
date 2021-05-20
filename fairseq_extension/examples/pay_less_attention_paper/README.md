@@ -148,7 +148,7 @@ python -m torch.distributed.launch --nproc_per_node 8 $(which fairseq-train) \
 
 # Evaluation
 CUDA_VISIBLE_DEVICES=0 fairseq-generate data-bin/wmt16.en-de.joined-dict.newstest2014 --path "${SAVE}/checkpoint_best.pt" --batch-size 128 --beam 5 --remove-bpe --lenpen 0.5 --gen-subset test > wmt16_gen.txt
-bash scripts/compound_split_bleu.sh wmt16_gen.txt
+scripts/compound_split_bleu.sh wmt16_gen.txt
 ```
 
 ### WMT14 En-Fr
