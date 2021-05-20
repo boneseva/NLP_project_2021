@@ -45,13 +45,12 @@ bash scripts/preprocess_ted.sh
 ```
 or downloading the already preprocessed data:
 ```bash
-wget download binarized corpus into data/data-binarized-ted
+bash scripts/download_ted_binarized.sh
 ```
 
 If you didn't train the general model yourself, you can download the best epoch:
-```bash
-wget download best epoch as results/general/checkpoint_best.pt
-```
+* Download the latest checkpoint from https://drive.google.com/drive/folders/1RObf3zXgZXqgzUf4EZWreblnpPr6u07x?usp=sharing
+* Save it to results/general as checkpoint_best.pt
 
 ### Fine-tune a domain specific translation model on TED data
 
@@ -60,3 +59,38 @@ bash scripts/fine_tune.sh
 ```
 
 ### Evaluate
+
+* Download all checkpoints from https://drive.google.com/drive/folders/1RObf3zXgZXqgzUf4EZWreblnpPr6u07x?usp=sharing and save them to results/general.
+* Download all checkpoints from https://drive.google.com/drive/folders/1cKTtlo_TlspxBj1K9vnRLmpGjMLubSLj?usp=sharing and save them to results/ted.
+
+* Download the binarized general validation set using:
+```bash
+bash scripts/download_general_binarized.sh
+```
+* Run translation for the general model on the general dataset:
+```bash
+bash scripts/translate_general.sh
+```
+
+* Download and unzip (and untar) all files from the assistant dataset (https://unilj-my.sharepoint.com/:f:/g/personal/slavkozitnik_fri1_uni-lj_si/EtOvwH2ldEdJhL9i-fMJj_kBPxzAp_6h6151GuvEsSILzw?e=TJ0a1F) into data/datasets-asistent.
+* Preprocess them:
+```bash
+bash scripts/preprocess_asistent.sh
+```
+or download the preprocessed files:
+```bash
+bash scripts/download_asistent_binarized.sh
+```
+* Run translation for both models on the assistant dataset:
+```bash
+bash scripts/translate_asistent.sh
+```
+
+* Download the binarized domain validation set using:
+```bash
+bash scripts/download_ted_binarized.sh
+```
+* Run translation for both models on the domain dataset:
+```bash
+bash scripts/translate_ted.sh
+```
