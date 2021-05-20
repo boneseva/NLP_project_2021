@@ -1,9 +1,8 @@
 #!/bin/bash
 
-cd ..
-
 DIR=data/data-original-ted
 mkdir -p $DIR
+cd $DIR
 
 corpora="TED2013 TED2020"
 
