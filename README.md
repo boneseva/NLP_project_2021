@@ -37,7 +37,7 @@ bash scripts/train.sh
 ### Prepare the data
 You can again prepare the data by either downloading the original data and preprocessing it:
 ```bash
-wget download TED corpus into data/data-original-ted
+bash scripts/download_ted.sh
 bash scripts/preprocess_ted.sh
 ```
 or downloading the already preprocessed data:
