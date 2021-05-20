@@ -17,7 +17,8 @@ pip install --editable fairseq_extension
 
 ### Prepare the data
 You can prepare the data by either downloading the original data and preprocessing it (it will take a long time and you will not get the same train and valid sets, as they are chosen at random):
-```bash scripts/download_datasets.sh
+```
+bash scripts/download_datasets.sh
 bash scripts/preprocess_general.sh
 ```
 or downloading the already preprocessed data:
