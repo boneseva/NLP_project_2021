@@ -2,12 +2,15 @@
 
 ## Prepare the environment
 #### Prerequisites:
+* Linux environment
+* For Windows: you will able to run evaluation, but not preprocessing or training. Download the files by copying the link from wget into your browser. You can also download Ubuntu for Windows, if you would prefer to run scripts as you would in a Linux environment.  
 * Python 3
+* Clone the repository and enter the folder.
 
 ```bash
 python3 -m venv myvenv
 source myvenv/bin/activate
-pip install -r requirements
+pip install -r requirements.txt
 cd fairseq_extension
 pip install --editable ./
 cd ..
@@ -15,9 +18,8 @@ cd ..
 ## Train general model
 
 ### Prepare the data
-You can prepare the data by either downloading the original data and preprocessing it (will take a long time):
-```bash
-wget download original corpus into data/data-original
+You can prepare the data by either downloading the original data and preprocessing it (it will take a long time and you will not get the same train and valid sets, as they are chosen at random):
+```bash bash_scripts/download_datasets.sh
 bash bash_scripts/preprocess_general.sh
 ```
 or downloading the already preprocessed data:
