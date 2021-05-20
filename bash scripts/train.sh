@@ -1,9 +1,9 @@
-RESULT=../results/en-sl
-mkdir -p ../results/en-sl
-BIN=../data/data-binarized/datasets_en-sl
+RESULT=results/general
+mkdir -p results/general
+BIN=data/data-binarized
 
-# -m torch.distributed.launch --nproc_per_node=2 
-CUDA_VISIBLE_DEVICES=0,1,2 python3 -m torch.distributed.launch --nproc_per_node=2 ../fairseq_cli/train.py $BIN \
+# -m torch.distributed.launch --nproc_per_node=2
+CUDA_VISIBLE_DEVICES=0,1 python3 -m torch.distributed.launch --nproc_per_node=1 fairseq_extension/fairseq_cli/train.py $BIN \
     --arch transformer \
     --reset-optimizer \
     --optimizer adam \

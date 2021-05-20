@@ -1,37 +1,58 @@
-# Automatic language translation
+# Automatic language translation NLP course 2021
 
-## Used frameworks
-
-* [fairseq](https://github.com/pytorch/fairseq) (for training from scratch)
-* [Hugging Face](https://huggingface.co/) (for pretrained model)
-
-## [Pretrained model](https://huggingface.co/Helsinki-NLP/opus-mt-en-zls)
-
-The pretrained model can be evaluated using [translate_pretrained.py](https://github.com/bounesh/NLP_project_2021/blob/main/translate_pretrained.py).
-
-## Datasets used for training the general model
-
-* [MultiCCAligned](https://opus.nlpl.eu/MultiCCAligned-v1.php) 
-* [WikiMatrix](https://opus.nlpl.eu/WikiMatrix-v1.php)
-* [wikimedia](https://opus.nlpl.eu/wikimedia-v20210402.php)
-* [OpenSubtitles](https://opus.nlpl.eu/OpenSubtitles-v2018.php)
-* [DGT](https://opus.nlpl.eu/DGT-v2019.php) 
-* [XLEnt](https://opus.nlpl.eu/XLEnt-v1.php)
-* [TildeMODEL](https://opus.nlpl.eu/TildeMODEL-v2018.php)
-* [ParaCrawl](https://opus.nlpl.eu/ParaCrawl-v7.1.php)
-* [CCAligned](https://opus.nlpl.eu/CCAligned-v1.php) 
-* [Europarl](https://opus.nlpl.eu/Europarl.php)
-
-## Train transformer model with data augmentation on [general datasets](#datasets-used-for-training-the-general-model)
+## Prepare the environment
+#### Prerequisites:
+* Python 3
 
 ```bash
-cd fairseq_extension
+python3 -m venv myvenv
+source myvenv/bin/activate
 pip install -r requirements
+cd fairseq_extension
 pip install --editable ./
-cd 'bash scripts'
-bash preprocessing.sh # downloads the datasets, preprocesses them (bpe tokenization, binarization, ...) and splits them into train & valid (random 0.0002%) 
-bash train.sh # trains the model on fairseq with cut off augmentation
+cd ..
+```
+## Train general model
+
+### Prepare the data
+You can prepare the data by either downloading the original data and preprocessing it (will take a long time):
+```bash
+wget download original corpus into data/data-original
+bash bash_scripts/preprocess_general.sh
+```
+or downloading the already preprocessed data:
+```bash
+wget download binarized corpus into data/data-binarized
 ```
 
-## For evaluation
-```pip install nltk jiwer```
+### Train transformer model with data augmentation on general datasets
+
+```bash
+bash bash_scripts/train.sh
+```
+
+## Fine-tune the general model on TED data
+
+### Prepare the data
+You can again prepare the data by either downloading the original data and preprocessing it:
+```bash
+wget download TED corpus into data/data-original-ted
+bash bash_scripts/preprocess_ted.sh
+```
+or downloading the already preprocessed data:
+```bash
+wget download binarized corpus into data/data-binarized-ted
+```
+
+If you didn't train the general model yourself, you can download the best epoch:
+```bash
+wget download best epoch as results/general/checkpoint_best.pt
+```
+
+### Fine-tune a domain specific translation model on TED data
+
+```bash
+bash bash_scripts/fine_tune.sh
+```
+
+### Evaluate

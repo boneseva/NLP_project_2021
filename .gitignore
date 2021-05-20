@@ -138,4 +138,8 @@ dmypy.json
 /fairseq_extension/subword-nmt/
 /fairseq_extension/results
 /data/
+<<<<<<< Updated upstream
 results/
+=======
+/results
+>>>>>>> Stashed changes
