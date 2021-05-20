@@ -4,19 +4,23 @@
 
 cd fairseq_extension
 
-echo 'Cloning Moses github repository (for tokenization scripts)...'
-git clone https://github.com/moses-smt/mosesdecoder.git
+if [! -d mosesdecoder]; then
+  echo 'Cloning Moses github repository (for tokenization scripts)...'
+  git clone https://github.com/moses-smt/mosesdecoder.git
+fi
 
-echo 'Cloning Subword NMT repository (for BPE pre-processing)...'
-git clone https://github.com/rsennrich/subword-nmt.git
+if [! -d subword-nmt]; then
+  echo 'Cloning Subword NMT repository (for BPE pre-processing)...'
+  git clone https://github.com/rsennrich/subword-nmt.git
+fi
+cd ..
 
-
-SCRIPTS=mosesdecoder/scripts
+SCRIPTS=fairseq_extension/mosesdecoder/scripts
 TOKENIZER=$SCRIPTS/tokenizer/tokenizer.perl
 CLEAN=$SCRIPTS/training/clean-corpus-n.perl
 NORM_PUNC=$SCRIPTS/tokenizer/normalize-punctuation.perl
 REM_NON_PRINT_CHAR=$SCRIPTS/tokenizer/remove-non-printing-char.perl
-BPEROOT=subword-nmt/subword_nmt
+BPEROOT=fairseq_extension/subword-nmt/subword_nmt
 BPE_TOKENS=40000
 
 

@@ -2,20 +2,26 @@
 # Adapted from https://github.com/facebookresearch/MIXER/blob/master/prepareData.sh
 # Whole repo: https://github.com/stevezheng23/fairseq_extension
 
+cd fairseq_extension
+
+if [! -d mosesdecoder]; then
+  echo 'Cloning Moses github repository (for tokenization scripts)...'
+  git clone https://github.com/moses-smt/mosesdecoder.git
+fi
+
+if [! -d subword-nmt]; then
+  echo 'Cloning Subword NMT repository (for BPE pre-processing)...'
+  git clone https://github.com/rsennrich/subword-nmt.git
+fi
+
 cd ..
 
-#echo 'Cloning Moses github repository (for tokenization scripts)...'
-#git clone https://github.com/moses-smt/mosesdecoder.git
-#
-#echo 'Cloning Subword NMT repository (for BPE pre-processing)...'
-#git clone https://github.com/rsennrich/subword-nmt.git
-
-SCRIPTS=mosesdecoder/scripts
+SCRIPTS=fairseq_extension/mosesdecoder/scripts
 TOKENIZER=$SCRIPTS/tokenizer/tokenizer.perl
 CLEAN=$SCRIPTS/training/clean-corpus-n.perl
 NORM_PUNC=$SCRIPTS/tokenizer/normalize-punctuation.perl
 REM_NON_PRINT_CHAR=$SCRIPTS/tokenizer/remove-non-printing-char.perl
-BPEROOT=subword-nmt/subword_nmt
+BPEROOT=fairseq_extension/subword-nmt/subword_nmt
 BPE_TOKENS=40000
 
 
