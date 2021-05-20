@@ -94,3 +94,19 @@ bash scripts/download_ted_binarized.sh
 ```bash
 bash scripts/translate_ted.sh
 ```
+
+Then, clean up the files using:
+```bash
+python3 clean_trained.py
+```
+
+To translate the assistant and domain validation sets with the pretrained model, run:
+```bash
+python3 translate_pretrained.py
+```
+
+You can then evaluate and calculate the needed metrics for each model and dataset using the following command: 
+```bash
+python3 evaluate.py <model> <dataset>
+```
+The model can be one of pretrained, general, domain, while the dataset can be asistent, general or ted. You can also omit the dataset, in which case the script will evaluate the model on all the datasets.
