@@ -35,9 +35,9 @@ bash scripts/train.sh
 ## Fine-tune the general model on TED data
 
 ### Prepare the data
-You can again prepare the data by either downloading the original data and preprocessing it:
+You can again prepare the data by either downloading the train and valid sets and preprocessing it:
 ```bash
-bash scripts/download_ted.sh
+bash scripts/download_ted_train_valid.sh
 bash scripts/preprocess_ted.sh
 ```
 or downloading the already preprocessed data:
