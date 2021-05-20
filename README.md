@@ -8,9 +8,7 @@
 python3 -m venv myvenv
 source myvenv/bin/activate
 pip install -r requirements
-cd fairseq_extension
-pip install --editable ./
-cd ..
+pip install --editable fairseq_extension
 ```
 ## Train general model
 
