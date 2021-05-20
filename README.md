@@ -17,13 +17,15 @@ pip install --editable fairseq_extension
 
 ### Prepare the data
 You can prepare the data by either downloading the original data and preprocessing it (it will take a long time and you will not get the same train and valid sets, as they are chosen at random):
-```
+```bash
 bash scripts/download_datasets.sh
 bash scripts/preprocess_general.sh
 ```
 or downloading the already preprocessed data:
-Download the zip from https://drive.google.com/file/d/1ochxd0Uk52VNWjOpbXMNJtxcG7gi1Dg8/view?usp=sharing
-Unzip it into data/data-binarized
+
+```bash
+bash scripts/download_general_binarized.sh
+```
 
 ### Train transformer model with data augmentation on general datasets
 
@@ -34,6 +36,8 @@ bash scripts/train.sh
 ## Fine-tune the general model on TED data
 
 ### Prepare the data
+* Download the zip from https://drive.google.com/file/d/1ochxd0Uk52VNWjOpbXMNJtxcG7gi1Dg8/view?usp=sharing
+* Unzip its contents into data/datasets
 You can again prepare the data by either downloading the train and valid sets and preprocessing it:
 ```bash
 bash scripts/download_ted_train_valid.sh
