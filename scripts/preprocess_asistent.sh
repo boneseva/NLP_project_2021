@@ -71,3 +71,6 @@ for L in $src $tgt; do
 	echo "apply_bpe.py to train.${L}..."
 	python3 $BPEROOT/apply_bpe.py -c $BPE_CODE < $tmp/train.tags.en-sl.tok.$L > $prep/train.$L
 done
+
+echo "binarize"
+bash "scripts"/binarize_asistent.sh

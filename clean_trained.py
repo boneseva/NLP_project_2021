@@ -49,12 +49,6 @@ def parse_file(dataset, results_folder, model):
     except Exception:
         print("Couldn't clean file", file_to_clean)
 
-def check_if_row_needed(needed_rows, row):
-    for i, nrow in enumerate(needed_rows):
-        if row[:10] in nrow:
-            return i
-    return -1
-
 if __name__ == '__main__':
     for dataset in ['general', 'asistent', 'ted']:
 
