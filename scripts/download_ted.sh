@@ -26,7 +26,7 @@ unzip extra.zip
 rm extra.zip
 
 #fix dataset file endings from drive
-for f in $DIR/*en.txt; do mv "$f" "${f%en.txt}.en"; done
-for f in $DIR/*sl.txt; do mv "$f" "${f%sl.txt}.sl"; done
+for f in *en.txt; do mv "$f" "${f%en.txt}.en"; done
+for f in *sl.txt; do mv "$f" "${f%sl.txt}.sl"; done
 
 cd ../..

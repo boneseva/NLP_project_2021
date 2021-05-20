@@ -4,12 +4,12 @@
 
 cd fairseq_extension
 
-if [! -d mosesdecoder]; then
+if [ ! -d mosesdecoder ]; then
   echo 'Cloning Moses github repository (for tokenization scripts)...'
   git clone https://github.com/moses-smt/mosesdecoder.git
 fi
 
-if [! -d subword-nmt]; then
+if [ ! -d subword-nmt ]; then
   echo 'Cloning Subword NMT repository (for BPE pre-processing)...'
   git clone https://github.com/rsennrich/subword-nmt.git
 fi
