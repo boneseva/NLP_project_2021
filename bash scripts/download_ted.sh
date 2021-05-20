@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd ..
-
 DIR=data/data-original-ted
 mkdir -p $DIR
 
