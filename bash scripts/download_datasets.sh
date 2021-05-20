@@ -2,6 +2,7 @@
 
 DIR=data/data-original
 mkdir -p $DIR
+cd $DIR
 
 v1corpora="CCAligned MultiCCAligned OpenSubtitles WikiMatrix XLEnt"
 
