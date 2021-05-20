@@ -22,9 +22,8 @@ bash scripts/download_datasets.sh
 bash scripts/preprocess_general.sh
 ```
 or downloading the already preprocessed data:
-```bash
-wget download binarized corpus into data/data-binarized
-```
+Download the zip from https://drive.google.com/file/d/1ochxd0Uk52VNWjOpbXMNJtxcG7gi1Dg8/view?usp=sharing
+Unzip it into data/data-binarized
 
 ### Train transformer model with data augmentation on general datasets
 
