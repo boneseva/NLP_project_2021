@@ -61,7 +61,7 @@ done
 #
 #perl $CLEAN -ratio 5 $tmp/train.tags.$lang.tok $src $tgt $tmp/train-cleaned.tags.$lang.tok 2 250
 
-python3 "bash scripts"/split.py $lang 'ted' 940
+python3 "scripts"/split.py $lang 'ted' 940
 
 #TRAIN=$tmp/train.en-sl
 #BPE_CODE=$prep/code

@@ -92,13 +92,13 @@ report [sacrebleu](https://github.com/mjpost/sacrebleu) scores instead.
 
 To compute "compound split" tokenized BLEU (not recommended!):
 ```bash
-bash scripts/compound_split_bleu.sh gen.out
+scripts/compound_split_bleu.sh gen.out
 # BLEU4 = 29.29, 60.3/35.0/22.8/15.3 (BP=1.000, ratio=1.004, syslen=64763, reflen=64496)
 ```
 
 To compute detokenized BLEU with sacrebleu (preferred):
 ```bash
-bash scripts/sacrebleu.sh wmt14/full en de gen.out
+scripts/sacrebleu.sh wmt14/full en de gen.out
 # BLEU+case.mixed+lang.en-de+numrefs.1+smooth.exp+test.wmt14/full+tok.13a+version.1.4.3 = 28.6 59.3/34.3/22.1/14.9 (BP = 1.000 ratio = 1.016 hyp_len = 63666 ref_len = 62688)
 ```
 
