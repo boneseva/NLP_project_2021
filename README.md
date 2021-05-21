@@ -75,14 +75,17 @@ If you didn't train the general model yourself, you can download the best epoch:
 1) Download all checkpoints from https://drive.google.com/drive/folders/1RObf3zXgZXqgzUf4EZWreblnpPr6u07x?usp=sharing and save them to results/general.
 2) Download all checkpoints from https://drive.google.com/drive/folders/1cKTtlo_TlspxBj1K9vnRLmpGjMLubSLj?usp=sharing and save them to results/ted.
 
-**TL;DR I just want to run it:**
-
+###TL;DR I just want to run it:
  ```bash
  bash scripts/translate_all.sh
  python3 evaluate.py <model> <dataset>
  ```
+The model can be one of pretrained, general, domain, while the dataset can be asistent, general or ted. You can also omit the dataset, in which case the script will evaluate the model on all the datasets.
 
-General validation set (translate with general model):
+
+###The longer way:
+
+####General validation set (translate with general model):
 1) Download the binarized general validation set using:
  ```bash
  bash scripts/download_general_binarized.sh
@@ -92,7 +95,7 @@ General validation set (translate with general model):
  bash scripts/translate_general.sh
  ```
 
-Assistant validation set (translate with general and domain model):
+####Assistant validation set (translate with general and domain model):
 1) Download and unzip (and untar) all files from the assistant dataset (https://unilj-my.sharepoint.com/:f:/g/personal/slavkozitnik_fri1_uni-lj_si/EtOvwH2ldEdJhL9i-fMJj_kBPxzAp_6h6151GuvEsSILzw?e=TJ0a1F) into data/asistent-testset and
 preprocess them:
  ```bash
@@ -109,7 +112,7 @@ preprocess them:
  bash scripts/translate_asistent.sh
  ```
 
-Domain validation set (translate with general and domain model):
+####Domain validation set (translate with general and domain model):
 
 1) If you haven't preprocessed/downloaded TED validation sets for fine-tuning, download binarized files:
  ```bash
@@ -128,7 +131,7 @@ Domain validation set (translate with general and domain model):
 
 [comment]: <> (```)
 
-Assistant and domain validation set (translate with pretrained model):
+#### Assistant and domain validation set (translate with pretrained model):
 ```bash
 python3 translate_pretrained.py
 ```
@@ -141,7 +144,7 @@ python3 translate_pretrained.py
  ```bash
  python3 clean_trained.py
  ```
-2) Calculate metrics (the model can be one of pretrained, general, domain, while the dataset can be asistent, general or ted. You can also omit the dataset, in which case the script will evaluate the model on all the datasets)
+2) Calculate metrics (the model can be one of pretrained, general, domain, while the dataset can be asistent, general or ted. You can also omit the dataset, in which case the script will evaluate the model on all the datasets.)
  ```bash
  python3 evaluate.py <model> <dataset>
  ```
