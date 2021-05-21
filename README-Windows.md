@@ -18,14 +18,15 @@ pip install --editable fairseq_extension
 * Download the translated files from https://drive.google.com/file/d/10q0vKenMVS5cxNHhXYnNaz9AUjyiIQRt/view?usp=sharing and unzip it into the folder data. 
 * Download and unzip (and untar) all files from the assistant dataset (https://unilj-my.sharepoint.com/:f:/g/personal/slavkozitnik_fri1_uni-lj_si/EtOvwH2ldEdJhL9i-fMJj_kBPxzAp_6h6151GuvEsSILzw?e=TJ0a1F) into data/asistent-testset.
 * The folder structure should look like this:
-.
-+-- fairseq_extension
-+-- scripts
-+-- data
-|   +-- translated-asistent
-|   +-- translated-general
-|   +-- translated-ted
-|   +-- asistent-testset
+
+📦NLP_project_2021
+ ┣ 📂fairseq_extension
+ ┣ 📂scripts
+ ┣ 📂data
+ ┃ ┣ 📂translated-asistent
+ ┃ ┣ 📂translated-general
+ ┃ ┣ 📂translated-ted
+ ┃ ┣ 📂asistent-testset
 
 You can then evaluate and calculate the needed metrics for each model and dataset using the following command: 
 ```bash
