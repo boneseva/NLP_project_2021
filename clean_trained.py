@@ -52,7 +52,7 @@ def parse_file(dataset, results_folder, model):
 if __name__ == '__main__':
     for dataset in ['general', 'asistent', 'ted']:
 
-        base_folder = "fairseq_extension/data/translated-" + dataset + "/"
+        base_folder = "data/translated-" + dataset + "/"
 
         for i in range(1, 9):
             results_folder = base_folder + "results" + str(i) + "/"

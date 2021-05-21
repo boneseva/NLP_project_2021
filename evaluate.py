@@ -2,11 +2,11 @@ import nltk
 from jiwer import wer
 import sys
 
-evaluation_data = {'ted': 'fairseq_extension/data/translated-ted/valid',
-         'asistent': 'fairseq_extension/data/asistent-testset/asistent_testset',
-         'general': 'fairseq_extension/data/translated-general/valid'}
+evaluation_data = {'ted': 'data/translated-ted/valid',
+         'asistent': 'data/asistent-testset/asistent_testset',
+         'general': 'data/translated-general/valid'}
 
-base_translation_path = "fairseq_extension/data/translated-"
+base_translation_path = "data/translated-"
 
 def evaluate_one(translation_path, valid_path):
     hypotheses = []

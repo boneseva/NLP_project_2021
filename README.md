@@ -3,7 +3,7 @@
 ## Prepare the environment
 #### Prerequisites:
 * Linux environment
-* For Windows: you will able to run evaluation, but not preprocessing or training. Download the files by copying the link from wget into your browser. You can also download Ubuntu for Windows, if you would prefer to run scripts as you would in a Linux environment.  
+* For Windows: Go to [README for Windows](README-Windows.md).
 * Python 3
 * Clone the repository and enter the folder.
 
@@ -78,7 +78,7 @@ bash scripts/download_general_binarized.sh
 bash scripts/translate_general.sh
 ```
 
-* Download and unzip (and untar) all files from the assistant dataset (https://unilj-my.sharepoint.com/:f:/g/personal/slavkozitnik_fri1_uni-lj_si/EtOvwH2ldEdJhL9i-fMJj_kBPxzAp_6h6151GuvEsSILzw?e=TJ0a1F) into data/datasets-asistent.
+* Download and unzip (and untar) all files from the assistant dataset (https://unilj-my.sharepoint.com/:f:/g/personal/slavkozitnik_fri1_uni-lj_si/EtOvwH2ldEdJhL9i-fMJj_kBPxzAp_6h6151GuvEsSILzw?e=TJ0a1F) into data/asistent-testset.
 * Preprocess them:
 ```bash
 bash scripts/preprocess_asistent.sh
