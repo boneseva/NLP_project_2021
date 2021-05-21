@@ -37,6 +37,10 @@
 The model can be one of pretrained, general, domain, while the dataset can be asistent, general or ted. You can also omit the dataset, in which case the script will evaluate the model on all the datasets.
 
 ## TL;DR I just want to run translation on all datasets and models:
+
+1) Download all checkpoints from https://drive.google.com/drive/folders/1RObf3zXgZXqgzUf4EZWreblnpPr6u07x?usp=sharing and save them to results/general.
+2) Download all checkpoints from https://drive.google.com/drive/folders/1cKTtlo_TlspxBj1K9vnRLmpGjMLubSLj?usp=sharing and save them to results/ted.
+
  ```bash
  bash scripts/translate_all.sh
  python3 evaluate.py <model> <dataset>
