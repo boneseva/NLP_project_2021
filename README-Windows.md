@@ -20,13 +20,21 @@ pip install --editable fairseq_extension
 * The folder structure should look like this:
 
 📦NLP_project_2021
+
  ┣ 📂fairseq_extension
+ 
  ┣ 📂scripts
+ 
  ┣ 📂data
+ 
  ┃ ┣ 📂translated-asistent
+ 
  ┃ ┣ 📂translated-general
+ 
  ┃ ┣ 📂translated-ted
+ 
  ┃ ┣ 📂asistent-testset
+ 
 
 You can then evaluate and calculate the needed metrics for each model and dataset using the following command: 
 ```bash
