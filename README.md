@@ -67,6 +67,7 @@ TL;DR I just want to run it:
 ```bash
 bash scripts/translate_all.sh
 ```
+and then go straight to "Calculating metrics".
 
 The long way around:
 * Download the binarized general validation set using:
@@ -111,7 +112,7 @@ To translate the assistant and domain validation sets with the pretrained model,
 python3 translate_pretrained.py
 ```
 
-You can then evaluate and calculate the needed metrics for each model and dataset using the following command: 
+### Calculating metrics
 ```bash
 python3 evaluate.py <model> <dataset>
 ```
