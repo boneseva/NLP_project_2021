@@ -66,7 +66,10 @@ if __name__ == '__main__':
     model = sys.argv[1]
     print("Evaluating model", model)
     if len(sys.argv) > 2:
-        evaluate_dataset(sys.argv[2])
+        if sys.argv[2]=='domain':
+            evaluate_dataset(model, 'ted')
+        else:
+            evaluate_dataset(model, sys.argv[2])
     else:
         if model == 'pretrained' or model == 'domain':
             for dataset in ['asistent', 'ted']:

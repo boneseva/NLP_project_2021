@@ -11,6 +11,7 @@ Because this code was prepared for Linux environments, we only adapted evaluatio
 ```bash
 pip install -r requirements.txt
 pip install --editable fairseq_extension
+python3 -c "import nltk; nltk.download('wordnet')"
 ```
 
 ### Evaluate
@@ -32,4 +33,4 @@ You can then evaluate and calculate the needed metrics for each model and datase
 ```bash
 python3 evaluate.py <model> <dataset>
 ```
-The model can be one of pretrained, general, domain, while the dataset can be asistent, general or ted. You can also omit the dataset, in which case the script will evaluate the model on all the datasets.
+The model can be one of pretrained, general, domain, while the dataset can be asistent, general or domain. You can also omit the dataset, in which case the script will evaluate the model on all the datasets.

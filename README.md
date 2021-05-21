@@ -13,6 +13,7 @@
  source myvenv/bin/activate
  pip install -r requirements.txt
  pip install --editable fairseq_extension
+ python3 -c "import nltk; nltk.download('wordnet')"
  ```
 ## Train general model
 
