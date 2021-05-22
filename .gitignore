@@ -137,9 +137,5 @@ dmypy.json
 /fairseq_extension/mosesdecoder/
 /fairseq_extension/subword-nmt/
 /fairseq_extension/results
-/data/
-<<<<<<< Updated upstream
-results/
-=======
-/results
->>>>>>> Stashed changes
+results
+/data
