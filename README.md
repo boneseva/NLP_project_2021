@@ -1,8 +1,13 @@
-# Automatic language translation NLP course 2021
+# Automatic language translation (UNI LJ FRI, NLP course 2021)
+
+This repository contains all the code used for training and evaluating an English to Slovene neural machine translation model that we built for NLP course in 2021.
+
+To reproduce it, follow the instructions:
 
 ## Prepare the environment
 #### Prerequisites:
 * Linux environment (for Windows: go to [README for Windows](README-Windows.md))
+* NVIDIA GPU (without GPU: go to [README for Windows](README-Windows.md))
 * Python 3
 
 
