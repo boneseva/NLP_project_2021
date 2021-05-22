@@ -6,8 +6,8 @@ To reproduce it, follow the instructions:
 
 ## Prepare the environment
 #### Prerequisites:
-* Linux environment (for Windows: go to [README for Windows](README-Windows.md))
-* NVIDIA GPU (without GPU: go to [README for Windows](README-Windows.md))
+* Linux environment (for Windows: go to [other README](README-Windows.md))
+* NVIDIA GPU (without GPU: go to [other README](README-Windows.md))
 * Python 3
 
 
@@ -23,9 +23,10 @@ To reproduce it, follow the instructions:
  
 ## TL;DR I just want to get the metrics:
 
-* Download the translated files from https://drive.google.com/file/d/10q0vKenMVS5cxNHhXYnNaz9AUjyiIQRt/view?usp=sharing and unzip it into the folder data. 
-* Download and unzip (and untar) all files from the assistant dataset (https://unilj-my.sharepoint.com/:f:/g/personal/slavkozitnik_fri1_uni-lj_si/EtOvwH2ldEdJhL9i-fMJj_kBPxzAp_6h6151GuvEsSILzw?e=TJ0a1F) into data/asistent-testset.
-* The folder structure should look like this:
+1) Download the translated files from https://drive.google.com/file/d/10q0vKenMVS5cxNHhXYnNaz9AUjyiIQRt/view?usp=sharing and unzip it into the folder `data`. 
+2) Download and unzip (and untar) all files from the assistant dataset (https://unilj-my.sharepoint.com/:f:/g/personal/slavkozitnik_fri1_uni-lj_si/EtOvwH2ldEdJhL9i-fMJj_kBPxzAp_6h6151GuvEsSILzw?e=TJ0a1F) into `data/asistent-testset`.
+   
+   The folder structure should look like this:
 
     📦NLP_project_2021  
       ┣ 📂fairseq_extension  
@@ -35,22 +36,23 @@ To reproduce it, follow the instructions:
       ┃ ┣ 📂translated-general  
       ┃ ┣ 📂translated-ted  
       ┃ ┣ 📂asistent-testset  
-      
+ 
+ 3) Run evaluation with:
  ```bash
  python3 evaluate.py <model> <dataset>
  ```
-The model can be one of pretrained, general, domain, while the dataset can be asistent, general or ted. You can also omit the dataset, in which case the script will evaluate the model on all the datasets.
+The model can be one of pretrained, general, domain, while the dataset can be asistent, general or domain. You can also omit the dataset, in which case the script will evaluate the model on all the datasets.
 
 ## TL;DR I just want to run translation on all datasets and models:
 
-1) Download all checkpoints from https://drive.google.com/drive/folders/1RObf3zXgZXqgzUf4EZWreblnpPr6u07x?usp=sharing and save them to results/general.
-2) Download all checkpoints from https://drive.google.com/drive/folders/1cKTtlo_TlspxBj1K9vnRLmpGjMLubSLj?usp=sharing and save them to results/ted.
-
+1) Download all checkpoints from https://drive.google.com/drive/folders/1RObf3zXgZXqgzUf4EZWreblnpPr6u07x?usp=sharing and save them to `results/general`.
+2) Download all checkpoints from https://drive.google.com/drive/folders/1cKTtlo_TlspxBj1K9vnRLmpGjMLubSLj?usp=sharing and save them to `results/ted`.
+3) Run translation and evaluation:
  ```bash
  bash scripts/translate_all.sh
  python3 evaluate.py <model> <dataset>
  ```
-The model can be one of pretrained, general, domain, while the dataset can be asistent, general or ted. You can also omit the dataset, in which case the script will evaluate the model on all the datasets.
+The model can be one of pretrained, general, domain, while the dataset can be asistent, general or domain. You can also omit the dataset, in which case the script will evaluate the model on all the datasets.
 
 ## Train general model
 
@@ -80,7 +82,7 @@ or downloading the already preprocessed data:
 [comment]: <> (* Download the zip from https://drive.google.com/file/d/1ochxd0Uk52VNWjOpbXMNJtxcG7gi1Dg8/view?usp=sharing)
 
 [comment]: <> (* Unzip its contents into data/datasets)
-You can again prepare the data by either downloading the train and valid sets and preprocessing it (you need to have dictionaries (dict.en.txt & dict.sl.txt) from the previous step in data/data-binarized folder):
+You can again prepare the data by either downloading the train and valid sets and preprocessing it (you need to have dictionaries (dict.en.txt & dict.sl.txt) from the previous step in `data/data-binarized` folder):
 
  ```bash
  bash scripts/download_ted_train_valid.sh
@@ -110,8 +112,8 @@ If you didn't train the general model yourself, you can download the best epoch:
 
 ## Evaluate
 
-1) Download all checkpoints from https://drive.google.com/drive/folders/1RObf3zXgZXqgzUf4EZWreblnpPr6u07x?usp=sharing and save them to results/general.
-2) Download all checkpoints from https://drive.google.com/drive/folders/1cKTtlo_TlspxBj1K9vnRLmpGjMLubSLj?usp=sharing and save them to results/ted.
+1) Download all checkpoints from https://drive.google.com/drive/folders/1RObf3zXgZXqgzUf4EZWreblnpPr6u07x?usp=sharing and save them to `results/general`.
+2) Download all checkpoints from https://drive.google.com/drive/folders/1cKTtlo_TlspxBj1K9vnRLmpGjMLubSLj?usp=sharing and save them to `results/ted`.
 
 ### General validation set (translate with general model):
 1) Download the binarized general validation set using:
@@ -124,7 +126,7 @@ If you didn't train the general model yourself, you can download the best epoch:
  ```
 
 ### Assistant validation set (translate with general and domain model):
-1) Download and unzip (and untar) all files from the assistant dataset (https://unilj-my.sharepoint.com/:f:/g/personal/slavkozitnik_fri1_uni-lj_si/EtOvwH2ldEdJhL9i-fMJj_kBPxzAp_6h6151GuvEsSILzw?e=TJ0a1F) into data/asistent-testset and
+1) Download and unzip (and untar) all files from the assistant dataset (https://unilj-my.sharepoint.com/:f:/g/personal/slavkozitnik_fri1_uni-lj_si/EtOvwH2ldEdJhL9i-fMJj_kBPxzAp_6h6151GuvEsSILzw?e=TJ0a1F) into `data/asistent-testset` and
 preprocess them:
  ```bash
  bash scripts/preprocess_asistent.sh
@@ -172,7 +174,7 @@ python3 translate_pretrained.py
  ```bash
  python3 clean_trained.py
  ```
-2) Calculate metrics (the model can be one of pretrained, general, domain, while the dataset can be asistent, general or ted. You can also omit the dataset, in which case the script will evaluate the model on all the datasets.)
+2) Calculate metrics (the model can be one of pretrained, general, domain, while the dataset can be asistent, general or domain. You can also omit the dataset, in which case the script will evaluate the model on all the datasets.)
  ```bash
  python3 evaluate.py <model> <dataset>
  ```
