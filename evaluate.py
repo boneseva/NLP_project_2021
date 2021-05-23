@@ -77,4 +77,3 @@ if __name__ == '__main__':
         elif model == 'general':
             for dataset in evaluation_data:
                 evaluate_dataset(model, dataset)
-                
